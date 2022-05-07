@@ -1,0 +1,51 @@
+:root {
+  --dark-color: rgb(24, 80, 80);
+  --font-color: rgb(221, 247, 240);
+  --main-color: rgb(94, 184, 230);
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+html {
+  margin: 0;
+  padding: 0;
+}
+
+h1 {
+  font-size: 2.5rem;
+  text-align: center;
+}
+
+h3 {
+  font-size: 1.5rem;
+  text-align: center;
+}
+
+h5 {
+  font-size: 1.2rem;
+  text-align: center;
+}
+
+body {
+  height: 100vh;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: stretch;
+  width: 70vw;
+}
+
+.main {
+  margin: 0 auto;
+  background-color: var(--main-color);
+  height: 100%;
+  width: 100%
+}
+
+.header, .footer {
+  background-color: var(--dark-color);
+  color: var(--font-color);
+}
