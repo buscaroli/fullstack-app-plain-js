@@ -51,3 +51,13 @@
 
 - worked on server/server.js, 👆 fixed errors as per **ERRATA CORRIGE** at #server3 👆
   - added rouse DELETE /smurfs: removes 'Clumsy' or if not found responds with an HTTP Status of 404 (Not Found) and an error message
+
+### client1
+
+- worked on the client/index.html and client/style.css files:
+  - added a header with title
+  - added a footer with some text
+  - added a main element
+  - used flex-box in order to keep the header and footer apart
+  - given the body a height of 100vh to have the page be the same size as the height of the screen
+  - page is fluid but not responsive (elements shrink but do not rearrange themselves when the screen widtg is decreased)
