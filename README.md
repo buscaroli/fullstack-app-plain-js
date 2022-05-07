@@ -61,3 +61,10 @@
   - used flex-box in order to keep the header and footer apart
   - given the body a height of 100vh to have the page be the same size as the height of the screen
   - page is fluid but not responsive (elements shrink but do not rearrange themselves when the screen widtg is decreased)
+
+### client2
+
+- worked on index.html and style.css:
+  - added two sections inside of main: section-1 contains the form, section-2 will contain the smurf cards
+  - added a basic form using flexbox
+  - the form is not doing anything yet when the button is pressed
