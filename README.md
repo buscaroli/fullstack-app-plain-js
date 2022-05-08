@@ -92,3 +92,20 @@
   - added the references to the elements we are going to targer
   - added a function that fetch the smurfs grom the GET /smurfs route of our server
     - the function is called as soon as the page loads using the window.onload property
+
+### client4
+
+- worked on client/app.js:
+  - we can now create cards with the smurfs name we fetched via the function introduced in the previous chapter
+  - the cards are appended to section-2
+
+#### Flow of the data
+
+1. we fetch the array from our server as soon as the page loads using window.onload( fetch( ...))
+
+- fetch gets a response that is converted to a Javascript object using response.json(). [Checkout this link for a brief explanation](https://developer.mozilla.org/en-US/docs/Web/API/Response/json)
+
+2. we console.log the data and then we send the array to a function called appendSmurfs
+3. appendSmurfs() takes an array as a parameter and runs createCardAndAppend() on each one of them
+4. createCardAndAppend() uses the smurf element of the array (which is a String) to add it to the card
+5. createCardAndAppend() appends the card to section2
