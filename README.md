@@ -17,7 +17,17 @@
 ```
 
 - one route has been added to /server/server.js
+
   - you can access localhost:3000/ (run `npm run dev` if not already launched then go to localhost:3000/ in your browser)
+
+  ### ERRATA CORRIDGE
+
+  - in the client/index.html I had originally imported a file called index.js but I had created a file called app.js
+  - amend the import at line 8 to the following (but we won't touch that file until ##client3):
+
+  ```html
+  <script defer src="./app.js"></script>
+  ```
 
 ### server2
 
@@ -68,3 +78,17 @@
   - added two sections inside of main: section-1 contains the form, section-2 will contain the smurf cards
   - added a basic form using flexbox
   - the form is not doing anything yet when the button is pressed
+
+### client3
+
+### ERRATA CORRIDGE - reminder from from ##server1
+
+- in the client/index.html I had originally imported a file called index.js but I had created a file called app.js
+  - amend the import at line 8 to the following if you haven't followed the ERRATA CORRIDGE at ##server1:
+  ```html
+  <script defer src="./app.js"></script>
+  ```
+- worked on client/app.js:
+  - added the references to the elements we are going to targer
+  - added a function that fetch the smurfs grom the GET /smurfs route of our server
+    - the function is called as soon as the page loads using the window.onload property
