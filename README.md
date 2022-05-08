@@ -184,3 +184,14 @@ Worked on client/add.js:
 
 - when creting the smurfCard:
   - added an event listened that will send a delete request when the card is clicked
+
+### polishing1
+
+Worked on client/app.js
+
+- The card colours now depend on the name of the smurf;
+  - Most smurfs will have a blue card with white text but some will have a different colour, try with:
+    - papa smurf
+    - smurfette
+    - vanity
+    - grouchy
