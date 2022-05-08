@@ -216,3 +216,13 @@ Then:
   - VSCode LiveView
   - http.server
   - your favourite choice
+
+## UPDATES
+
+Amended the justify-content property of .section-2 inside client/style.css:
+
+```css
+justify-content: center;
+```
+
+as the content is always centered, even in small screens.
