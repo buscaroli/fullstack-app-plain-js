@@ -195,3 +195,24 @@ Worked on client/app.js
     - smurfette
     - vanity
     - grouchy
+
+## HOW TO RUN
+
+To run the server:
+
+```bash
+cd server && npm start
+```
+
+To run the client:
+
+```bash
+cd client
+```
+
+Then:
+
+- open index.html and run it locally with:
+  - VSCode LiveView
+  - http.server
+  - your favourite choice
