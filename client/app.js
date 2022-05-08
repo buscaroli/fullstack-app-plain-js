@@ -20,11 +20,41 @@ console.log('section2 -> ', section2)
 // As we want to show all of out smurfs as soon as the page loads we are going to
 // call this function as soon as the page loads.
 // We do that by using the window.onload property.
+
+// Let's create a variable that will store our array with the smurfs we are going to fetch
+
 window.onload = function fetchSmurfs() {
   fetch('http://localhost:3000/smurfs')
     .then((response) => response.json())
     .then((data) => {
       console.log(data) // console.log for debugging purposes only
-      // we are going to create the smurfCard in here, very soon!
+
+      return data // we need to add return here as we are within { ... }
     })
+    .then((smurfsArray) => appendSmurfs(smurfsArray))
+}
+
+// this function will call another function that will create a card and append it
+// for each of the smurfs in the Array
+function appendSmurfs(arr) {
+  arr.forEach((smurf) => createCardAndAppend(smurf))
+}
+
+// this function will create an element with a class of smurfCard
+// will add the name of the smurf to the card
+// will apply a style to the card
+// will append the card to section2
+// I am going to do most of the styling in the client/style.css file
+// so we can easily modify them as required.
+// However I am adding the colours of the text and background programmatically
+// as in the future we might decide to use different colours for different smurfs
+function createCardAndAppend(smurf) {
+  let smurfCard = document.createElement('div')
+
+  smurfCard.classList.add('.smurfCard')
+  smurfCard.style.backgroundColor = 'blue'
+  smurfCard.style.color = 'white'
+  smurfCard.textContent = smurf
+
+  section2.append(smurfCard)
 }
