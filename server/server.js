@@ -25,15 +25,18 @@ app.get('/smurfs', (req, res) => {
 
 // POST /smurfs  -- Add a new Smurf to the array
 app.post('/smurfs/', (req, res) => {
-  // we create a new variable with the name Clumsy
-  const newSmurf = 'Clumsy'
+  // we create a new variable with the data received from req.body
+  // req.body is what is sent from client/submitNewSmurf()
+  const newSmurf = req.body
+  console.log(newSmurf)
+  const newSmurfName = newSmurf.name
+  console.log('newSmurfName -> ', newSmurfName)
 
   // We check if the name alrady exists in the database
-  // At the moment we have hardcoded the name so we'll be able to add it only once
-  const newSmurfExists = dataArray.some((smurf) => smurf === newSmurf)
+  const newSmurfExists = dataArray.some((smurf) => smurf === newSmurfName)
   console.log(newSmurfExists)
   // If the newSmurf is already in the Database we are going to console.log the message
-  // and we are also sending a response with an HTTP Status of 405 (Forbidden) and a
+  // and we are also sending a response with an HTTP Status of 403 (Forbidden) and a
   // json object with a key of error and a value of errorMessage
   if (newSmurfExists) {
     const errorMessagesArray = ['Whoops!', 'Golly!', 'Gosh!']
@@ -41,29 +44,32 @@ app.post('/smurfs/', (req, res) => {
 
     const randomIndex = Math.floor(Math.random() * numberOfMessages)
     const errorMessage =
-      errorMessagesArray[randomIndex] + ' I am already in the SmurfDatabase!'
+      errorMessagesArray[randomIndex] +
+      `${newSmurfName} is already in the SmurfDatabase!`
 
     console.log(`${errorMessage}`)
     res.status(403).send({
-      error:
-        errorMessagesArray[randomIndex] + 'I am already in the SmurfDatabase!',
+      error: errorMessage,
     })
 
     // If the newSmurf is not in the db we can add them
   } else {
-    dataArray.push(newSmurf)
-    res.send(newSmurf)
+    dataArray.push(newSmurfName)
+    res.send(newSmurfName)
   }
 
   // DELETE /smurfs
   app.delete('/smurfs', (req, res) => {
     // we want to remove Clumsy from the Database
     // At the moment it is hardcoded, later we'll be able to remove other smurfs too
-    const smurfToBeRemoved = 'Clumsy'
+    const newSmurf = req.body
+    console.log(newSmurf)
+    const nameSmurfToBeRemoved = newSmurf.name
+    console.log('nameSmurfToBeRemoved -> ', nameSmurfToBeRemoved)
 
     // We check if the smurf we want to remove is actually present in the DB
     const smurfToBeRemovedExists = dataArray.some(
-      (smurf) => smurf === smurfToBeRemoved
+      (smurf) => smurf === nameSmurfToBeRemoved
     )
 
     // If the smurf we want to remove exists in the DB we can filter it out and
@@ -80,8 +86,9 @@ app.post('/smurfs/', (req, res) => {
       // to the console, we send a HTTP Status response of 404 (NOT FOUND) and
       // we also send a JSON object with an error message.
     } else {
-      console.log(`That smurf is not in the SmurfDatabase!`)
-      res.status(404).send({ error: 'That smurf is not in the SmurfDatabase!' })
+      const errorMessage = `${nameSmurfToBeRemoved} is not in the SmurfDatabase!`
+      console.log(errorMessage)
+      res.status(404).send({ error: errorMessage })
     }
   })
 })

@@ -145,3 +145,25 @@ smurfCard.classList.add('smurfCard')
   ```
 
   - you can follow the same steps after deleting 'Clumsy' with Hoppscotch or a similar tool
+
+### fullstack1
+
+Worked on client/style.css:
+
+- removed the flex-grow property from .smurfCard as I didn't like the effect it had on the last row of smurfCards
+- amended the size of the cards
+
+Worked on cient/app.js:
+
+- we can now send the name of the smurf to the server
+- after sending the name we reload the page in order to have the full list of smurfs back
+
+Worked on server/server.js:
+
+- POST /smurfs:
+  - instead of using the hardcoded 'Clumsy' name for every smurf we can now use the one we submitted in our webpage
+  - before sending the name we had to convert it to a JSON string (in client/app.js) with JSON.stringify()
+  - in both routes 'POST /smurfs' and 'DELETE /smurfs':
+    - we can receive the JSON in server/server.js using the req.body object
+    - we extract the name out of that object (req.body.name)
+    - we amenhave to fix the comparison function to consider we now have to use req.body.name, whose value we saved in newSmurfName or nameSmurfToBeRemoved
