@@ -219,7 +219,7 @@ Worked on client/app.js
     - vanity
     - grouchy
 
-## UPDATES on main branch
+### main
 
 Amended the justify-content property of .section-2 inside client/style.css, as I prefer the content to always be centered, particularly with small screens.
 
@@ -229,7 +229,13 @@ justify-content: center;
 
 ### polishing2
 
-Worken on /client/app.js;
+Worked on /client/app.js
+Created client/utils.js
+Imported client/utils.js within index.html
 
 - segregated the fetchSmurfs function away from the window.onload assignment
-- amended the prder the functions are shown in the code to mimick the order in which they are called
+- amended the order the functions are shown in the code to mimick the order in which they are called
+- moved all the functions from client/index.html into client/utils.js
+- removed most comments as can be seen through the different branches
+
+#### **Separating the functionality (client/utils.js) from the controller (client/app.js) should make it easier to test as I can create two separate test suites.**
