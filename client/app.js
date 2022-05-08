@@ -58,3 +58,60 @@ function createCardAndAppend(smurf) {
 
   section2.append(smurfCard)
 }
+
+// Let's get the name of the smurf from the form-input element
+// Then let's send a POST request to the /smurfs endpoint
+// Then let's clear the form-input element
+form.addEventListener('submit', (event) => {
+  event.preventDefault()
+
+  const nameToSubmit = smurfName.value
+  // console.log('nameToSubmit -> ', nameToSubmit)
+
+  submitNewSmurf(nameToSubmit)
+})
+
+function submitNewSmurf(nameString) {
+  //As we need to post the value in the JSON format we are going to
+  // convert out string into a JS object and them we convert it to a
+  // JSON string with JSON.stringify()
+  const newSmurfObject = { name: nameString }
+  // console.log('newSmurfObject -> ', newSmurfObject)
+
+  const newSmurfJson = JSON.stringify(newSmurfObject)
+  // console.log(newSmurfJson)
+
+  // We can now make a POST request to /smurfs to have it added but
+  // we also have to amend the code in server/server.js, inside the
+  // app.post('/smurfs', () => {}) route in order to extract just the
+  // out of the JSON string and to replace the hardcoded 'Clumsy' with
+  // the name we entered in the form
+  // The same is also true for DELETE /smurfs
+
+  fetch('http://localhost:3000/smurfs', {
+    method: 'POST',
+    body: newSmurfJson,
+    headers: {
+      'Content-Type': 'application/json',
+    },
+  }).then(() => {
+    console.log('Hi there')
+    window.location.reload()
+  })
+  // .then(() => {
+  //   // we reset the value of the form-input to an empty string
+  //   smurfName.value = ''
+
+  //   // now we fetch the smurfs from the server
+  //   // remember to amend the server.server.js file! POST /smurfs
+  //   // and DELETE s/murfs
+  //   fetch('http://localhost:3000/smurfs')
+  //     .then((response) => response.json())
+  //     .then((data) => {
+  //       console.log(data) // console.log for debugging purposes only
+
+  //       return data // we need to add return here as we are within { ... }
+  //     })
+  //     .then((smurfsArray) => appendSmurfs(smurfsArray))
+  // })
+}
