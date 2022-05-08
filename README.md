@@ -1,6 +1,29 @@
 # Learning to connect the Frontend to the Backend: FullStack Dev
 
-## Branches
+## HOW TO RUN
+
+To run the server:
+
+```bash
+cd server && npm start
+```
+
+To run the client:
+
+```bash
+cd client
+```
+
+Then:
+
+- open index.html and run it locally with:
+  - VSCode LiveView
+  - http.server
+  - your favourite choice
+
+## BRANCHES
+
+This the order I have used to develop this app. By opening the branches in that order you can see all the different steps I have taken in order to get to the final release.
 
 ### server1
 
@@ -196,33 +219,17 @@ Worked on client/app.js
     - vanity
     - grouchy
 
-## HOW TO RUN
+## UPDATES on main branch
 
-To run the server:
-
-```bash
-cd server && npm start
-```
-
-To run the client:
-
-```bash
-cd client
-```
-
-Then:
-
-- open index.html and run it locally with:
-  - VSCode LiveView
-  - http.server
-  - your favourite choice
-
-## UPDATES
-
-Amended the justify-content property of .section-2 inside client/style.css:
+Amended the justify-content property of .section-2 inside client/style.css, as I prefer the content to always be centered, particularly with small screens.
 
 ```css
 justify-content: center;
 ```
 
-as the content is always centered, even in small screens.
+### polishing2
+
+Worken on /client/app.js;
+
+- segregated the fetchSmurfs function away from the window.onload assignment
+- amended the prder the functions are shown in the code to mimick the order in which they are called
