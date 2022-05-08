@@ -51,9 +51,30 @@ function appendSmurfs(arr) {
 function createCardAndAppend(smurf) {
   let smurfCard = document.createElement('div')
 
+  switch (smurf.toLowerCase()) {
+    case 'papa smurf':
+    case 'papasmurf':
+      smurfCard.style.backgroundColor = 'red'
+      smurfCard.style.color = 'white'
+      break
+    case 'smurfette':
+      smurfCard.style.backgroundColor = 'yellow'
+      smurfCard.style.color = 'black'
+      break
+    case 'grouchy':
+      smurfCard.style.backgroundColor = 'black'
+      smurfCard.style.color = 'white'
+      break
+    case 'vanity':
+      smurfCard.style.backgroundColor = 'pink'
+      smurfCard.style.color = 'white'
+      break
+    default:
+      smurfCard.style.backgroundColor = 'blue'
+      smurfCard.style.color = 'white'
+  }
+
   smurfCard.classList.add('smurfCard')
-  smurfCard.style.backgroundColor = 'blue'
-  smurfCard.style.color = 'white'
   smurfCard.textContent = smurf
 
   // adding an event listener to each card to we can remove it when clicked
