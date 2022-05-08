@@ -22,7 +22,8 @@
 
   ### ERRATA CORRIDGE
 
-  - in the client/index.html I had originally imported a file called index.js but I had created a file called app.js
+  In the client/index.html I had originally imported a file called index.js but I had created a file called app.js
+
   - amend the import at line 8 to the following (but we won't touch that file until ##client3):
 
   ```html
@@ -47,7 +48,8 @@
 
 #### ERRATA CORRIDGE
 
-- the array in server/data.js and in server/server.js should be defined as a let and not as a const
+The array in server/data.js and in server/server.js should be defined as a let and not as a const
+
 - inside the POST route we search if the smurf exists: I should have user the Array.some() method
   instead of the Array.every() and the logic will be different, please **correct** with the following:
 
@@ -83,17 +85,30 @@
 
 ### ERRATA CORRIDGE - reminder from from ##server1
 
-- in the client/index.html I had originally imported a file called index.js but I had created a file called app.js
-  - amend the import at line 8 to the following if you haven't followed the ERRATA CORRIDGE at ##server1:
-  ```html
-  <script defer src="./app.js"></script>
-  ```
+In the client/index.html I had originally imported a file called index.js but I had created a file called app.js
+
+- amend the import at line 8 to the following if you haven't followed the ERRATA CORRIDGE at ##server1:
+
+```html
+<script defer src="./app.js"></script>
+```
+
 - worked on client/app.js:
   - added the references to the elements we are going to targer
   - added a function that fetch the smurfs grom the GET /smurfs route of our server
     - the function is called as soon as the page loads using the window.onload property
 
 ### client4
+
+#### ERRATA CORRIDGE
+
+In client/app.js, please amend the line where we add the class to the smurfCard.
+
+- The correct way of adding a class is without the leading '.' as follows:
+
+```js
+smurfCard.classList.add('smurfCard')
+```
 
 - worked on client/app.js:
   - we can now create cards with the smurfs name we fetched via the function introduced in the previous chapter
@@ -109,3 +124,24 @@
 3. appendSmurfs() takes an array as a parameter and runs createCardAndAppend() on each one of them
 4. createCardAndAppend() uses the smurf element of the array (which is a String) to add it to the card
 5. createCardAndAppend() appends the card to section2
+
+### client5
+
+- Worked on client/style.css:
+
+  - added some basic styling for #section-2 and .smurfCard that you can find at the end of the file
+  - at this point even if you try to add 'Clumsy' with a tool like [Hoppscotch](https://hoppscotch.io/) you won't see it as the page is not refreshed
+  - if you really want to see that 'Clumsy' has been added you hacve two options:
+
+    1. reload the page!
+    2. run this command from the console of your browser's dev tools:
+
+  ```js
+  fetch('http://localhost:3000/smurfs')
+    .then((res) => res.json())
+    .then((x) => console.log(x))
+
+  // it should return: (4) ['Papa Smurf', 'Smurfette', 'Brainy', 'Clumsy']
+  ```
+
+  - you can follow the same steps after deleting 'Clumsy' with Hoppscotch or a similar tool

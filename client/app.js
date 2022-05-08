@@ -51,7 +51,7 @@ function appendSmurfs(arr) {
 function createCardAndAppend(smurf) {
   let smurfCard = document.createElement('div')
 
-  smurfCard.classList.add('.smurfCard')
+  smurfCard.classList.add('smurfCard')
   smurfCard.style.backgroundColor = 'blue'
   smurfCard.style.color = 'white'
   smurfCard.textContent = smurf

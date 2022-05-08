@@ -92,3 +92,29 @@ input, label {
   background-color: var(--dark-color);
   color: var(--font-color);
 }
+
+/* Styling Section-2 and smurfCard */
+
+#section-2 {
+  width: 80%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  align-content: flex-start;
+  gap: 5px;
+}
+
+.smurfCard {
+  font-size: 1.2rem;
+  flex-grow: 1;
+  width: 10%;
+  height: 50px;
+  padding: 20px;
+  border: 1px solid white;
+  border-radius: 5px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  
+}
