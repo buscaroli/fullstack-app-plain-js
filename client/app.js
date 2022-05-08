@@ -14,16 +14,57 @@ console.log('smurfName -> ', smurfName)
 console.log('form -> ', form)
 console.log('section2 -> ', section2)
 
-// This function will fetch the list of the smurfs from the server WE MADE!
-// Be sure you are running the server by moving into server/ and running either
-// 'npm start' or 'npm run dev' (as per server/package.json)
 // As we want to show all of out smurfs as soon as the page loads we are going to
 // call this function as soon as the page loads.
 // We do that by using the window.onload property.
+window.onload = fetchSmurfs
 
-// Let's create a variable that will store our array with the smurfs we are going to fetch
+// Let's get the name of the smurf from the form-input element
+// Then let's send a POST request to the /smurfs endpoint
+// Then let's clear the form-input element
+form.addEventListener('submit', (event) => {
+  event.preventDefault()
 
-window.onload = function fetchSmurfs() {
+  const nameToSubmit = smurfName.value
+  // console.log('nameToSubmit -> ', nameToSubmit)
+
+  submitNewSmurf(nameToSubmit)
+})
+
+function submitNewSmurf(nameString) {
+  //As we need to post the value in the JSON format we are going to
+  // convert out string into a JS object and them we convert it to a
+  // JSON string with JSON.stringify()
+  const newSmurfObject = { name: nameString }
+  // console.log('newSmurfObject -> ', newSmurfObject)
+
+  const newSmurfJson = JSON.stringify(newSmurfObject)
+  // console.log(newSmurfJson)
+
+  // We can now make a POST request to /smurfs to have it added but
+  // we also have to amend the code in server/server.js, inside the
+  // app.post('/smurfs', () => {}) route in order to extract just the
+  // out of the JSON string and to replace the hardcoded 'Clumsy' with
+  // the name we entered in the form
+  // The same is also true for DELETE /smurfs
+
+  fetch('http://localhost:3000/smurfs', {
+    method: 'POST',
+    body: newSmurfJson,
+    headers: {
+      'Content-Type': 'application/json',
+    },
+  }).then(() => {
+    console.log('Hi there')
+    window.location.reload()
+  })
+}
+
+// This function will fetch the list of the smurfs from the server WE MADE!
+// Be sure you are running the server by moving into server/ and running either
+// 'npm start' or 'npm run dev' (as per server/package.json)
+
+function fetchSmurfs() {
   fetch('http://localhost:3000/smurfs')
     .then((response) => response.json())
     .then((data) => {
@@ -83,49 +124,8 @@ function createCardAndAppend(smurf) {
   section2.append(smurfCard)
 }
 
-// Let's get the name of the smurf from the form-input element
-// Then let's send a POST request to the /smurfs endpoint
-// Then let's clear the form-input element
-form.addEventListener('submit', (event) => {
-  event.preventDefault()
-
-  const nameToSubmit = smurfName.value
-  // console.log('nameToSubmit -> ', nameToSubmit)
-
-  submitNewSmurf(nameToSubmit)
-})
-
-function submitNewSmurf(nameString) {
-  //As we need to post the value in the JSON format we are going to
-  // convert out string into a JS object and them we convert it to a
-  // JSON string with JSON.stringify()
-  const newSmurfObject = { name: nameString }
-  // console.log('newSmurfObject -> ', newSmurfObject)
-
-  const newSmurfJson = JSON.stringify(newSmurfObject)
-  // console.log(newSmurfJson)
-
-  // We can now make a POST request to /smurfs to have it added but
-  // we also have to amend the code in server/server.js, inside the
-  // app.post('/smurfs', () => {}) route in order to extract just the
-  // out of the JSON string and to replace the hardcoded 'Clumsy' with
-  // the name we entered in the form
-  // The same is also true for DELETE /smurfs
-
-  fetch('http://localhost:3000/smurfs', {
-    method: 'POST',
-    body: newSmurfJson,
-    headers: {
-      'Content-Type': 'application/json',
-    },
-  }).then(() => {
-    console.log('Hi there')
-    window.location.reload()
-  })
-}
-
-// Callback used within apendSmurfs
-// It is added to an eventListener when the card is created
+// Callback used within createCardAndAppend
+// It is added to an eventListener when the card is created.
 // this.textContent will contain the text displayed in the card
 // and it is used to delete the smurf from the DB serverside
 // within DELETE /smurfs
