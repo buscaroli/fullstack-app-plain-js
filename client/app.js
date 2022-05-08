@@ -56,6 +56,9 @@ function createCardAndAppend(smurf) {
   smurfCard.style.color = 'white'
   smurfCard.textContent = smurf
 
+  // adding an event listener to each card to we can remove it when clicked
+  smurfCard.addEventListener('click', deleteCard)
+
   section2.append(smurfCard)
 }
 
@@ -98,20 +101,28 @@ function submitNewSmurf(nameString) {
     console.log('Hi there')
     window.location.reload()
   })
-  // .then(() => {
-  //   // we reset the value of the form-input to an empty string
-  //   smurfName.value = ''
+}
 
-  //   // now we fetch the smurfs from the server
-  //   // remember to amend the server.server.js file! POST /smurfs
-  //   // and DELETE s/murfs
-  //   fetch('http://localhost:3000/smurfs')
-  //     .then((response) => response.json())
-  //     .then((data) => {
-  //       console.log(data) // console.log for debugging purposes only
+// Callback used within apendSmurfs
+// It is added to an eventListener when the card is created
+// this.textContent will contain the text displayed in the card
+// and it is used to delete the smurf from the DB serverside
+// within DELETE /smurfs
+function deleteCard() {
+  const smurfName = this.textContent
+  // console.log(smurfName) //for debugging purposes
 
-  //       return data // we need to add return here as we are within { ... }
-  //     })
-  //     .then((smurfsArray) => appendSmurfs(smurfsArray))
-  // })
+  const newSmurfObject = { name: smurfName }
+  const newSmurfJson = JSON.stringify(newSmurfObject)
+
+  fetch('http://localhost:3000/smurfs', {
+    method: 'DELETE',
+    body: newSmurfJson,
+    headers: {
+      'Content-Type': 'application/json',
+    },
+  }).then(() => {
+    console.log('Hi there deleting!')
+    window.location.reload()
+  })
 }

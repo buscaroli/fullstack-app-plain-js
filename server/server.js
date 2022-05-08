@@ -33,7 +33,9 @@ app.post('/smurfs/', (req, res) => {
   console.log('newSmurfName -> ', newSmurfName)
 
   // We check if the name alrady exists in the database
-  const newSmurfExists = dataArray.some((smurf) => smurf === newSmurfName)
+  const newSmurfExists = dataArray.some(
+    (smurf) => smurf.toLowerCase() === newSmurfName.toLowerCase()
+  )
   console.log(newSmurfExists)
   // If the newSmurf is already in the Database we are going to console.log the message
   // and we are also sending a response with an HTTP Status of 403 (Forbidden) and a
@@ -69,7 +71,7 @@ app.post('/smurfs/', (req, res) => {
 
     // We check if the smurf we want to remove is actually present in the DB
     const smurfToBeRemovedExists = dataArray.some(
-      (smurf) => smurf === nameSmurfToBeRemoved
+      (smurf) => smurf.toLowerCase() === nameSmurfToBeRemoved.toLowerCase()
     )
 
     // If the smurf we want to remove exists in the DB we can filter it out and
@@ -77,10 +79,10 @@ app.post('/smurfs/', (req, res) => {
     // We then send a response with the smurf we have deleted.
     if (smurfToBeRemovedExists) {
       let filteredArray = dataArray.filter(
-        (smurf) => smurf !== smurfToBeRemoved
+        (smurf) => smurf.toLowerCase() !== nameSmurfToBeRemoved.toLowerCase()
       )
       dataArray = filteredArray
-      res.send(smurfToBeRemoved)
+      res.send(nameSmurfToBeRemoved)
 
       // If the smurf we want to remove IS NOT in the array then we log a message
       // to the console, we send a HTTP Status response of 404 (NOT FOUND) and

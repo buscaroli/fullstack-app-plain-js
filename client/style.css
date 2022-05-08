@@ -106,15 +106,12 @@ input, label {
 
 .smurfCard {
   font-size: 1.4rem;
-  /* flex-grow: 1;  removed as was causing weird behaviour */
   width: 200px;
   height: 100px;
   padding: 20px;
   border: 1px solid white;
   border-radius: 5px;
-
   display: flex;
   justify-content: center;
   align-items: center;
-  
 }

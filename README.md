@@ -167,3 +167,20 @@ Worked on server/server.js:
     - we can receive the JSON in server/server.js using the req.body object
     - we extract the name out of that object (req.body.name)
     - we amenhave to fix the comparison function to consider we now have to use req.body.name, whose value we saved in newSmurfName or nameSmurfToBeRemoved
+
+### fullstack2
+
+### ERRATA CORRIDGE
+
+Within server/server.js inside route 'DELETE /smurfs':
+
+- I used an non-existing variable name of smurfToBeRemoved a few times, please amend it to nameSmurfToBeRemoved
+
+Worked on server/server.js:
+
+- amended array functions by adding toLowerCase() in order to avoid having the same smurf name twice just because it had some capitals (eg 'Papa Smurf' and 'papa smurf')
+
+Worked on client/add.js:
+
+- when creting the smurfCard:
+  - added an event listened that will send a delete request when the card is clicked
