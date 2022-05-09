@@ -1,3 +1,3 @@
-let smurfsArray = ['Papa Smurf', 'Smurfette', 'Brainy']
+let smurfsArray = []
 
 module.exports = smurfsArray
