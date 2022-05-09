@@ -276,3 +276,8 @@ Modified package.json to look like this:
 
 - tested input within the form
 - tested button within the form
+
+### testing-section-4
+
+- tested existence of section-2
+- tested the footer and its children

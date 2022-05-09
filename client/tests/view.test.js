@@ -81,6 +81,7 @@ describe('client/index.html', () => {
         label = document.querySelector('#form-label')
         input = document.querySelector('#form-input')
         btn = document.querySelector('#form-btn')
+        section2 = document.querySelector('#section-2')
       })
 
       it('tests and section-1 exists', () => {
@@ -135,6 +136,50 @@ describe('client/index.html', () => {
         it('tests the button has a value attribute and it equals to "Add"', () => {
           expect(btn.hasAttribute('value')).toBeTruthy()
           expect(btn.getAttribute('value')).toMatch('Add')
+        })
+      })
+
+      describe('section-2', () => {
+        it('tests that section-2 exists', () => {
+          expect(section2).toBeTruthy()
+        })
+      })
+
+      describe('footer', () => {
+        let footer, h3, h5
+        beforeEach(() => {
+          footer = document.querySelector('footer')
+          h3 = document.querySelector('h3')
+          h5 = document.querySelector('h5')
+        })
+        it('tests that the footer exists and that it has a class of "footer"', () => {
+          expect(footer).toBeTruthy()
+
+          const hasClassOfFooter = footer.classList.contains('footer')
+          expect(hasClassOfFooter).toBeTruthy()
+        })
+
+        describe('h3 inside of footer', () => {
+          it('tests that the h3 exists and that it has a class of "notes"', () => {
+            expect(h3).toBeTruthy()
+
+            const hasClassOfNotes = h3.classList.contains('notes')
+            expect(hasClassOfNotes).toBeTruthy()
+          })
+
+          it('tests that the h3 has a text containing the word README.md', () => {
+            expect(h3.textContent).toMatch(/README.md/)
+          })
+        })
+
+        describe('h5 inside of footer', () => {
+          it('tests that h5 exists', () => {
+            expect(h5).toBeTruthy()
+          })
+
+          it('expects h5 to contain the word utils', () => {
+            expect(h5.textContent).toMatch(/utils/)
+          })
         })
       })
     })
