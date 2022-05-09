@@ -271,3 +271,8 @@ Modified package.json to look like this:
 
 - Recovered from a random bug: had duplicate copies of files
 - testing the dom: tested form and label
+
+### testing-client-3
+
+- tested input within the form
+- tested button within the form

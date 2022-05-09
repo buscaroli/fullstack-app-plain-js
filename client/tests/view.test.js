@@ -105,6 +105,38 @@ describe('client/index.html', () => {
           expect(label.textContent).toMatch('Smurf Name')
         })
       })
+
+      describe('input', () => {
+        it('tests the input exists', () => {
+          expect(input).toBeTruthy()
+        })
+
+        it('tests the input has a type attribute and it equals to "text"', () => {
+          expect(input.hasAttribute('type')).toBeTruthy()
+          expect(input.getAttribute('type')).toMatch('text')
+        })
+
+        it('tests the input has a placeholder attribute and it equals to "Clumsy"', () => {
+          expect(input.hasAttribute('placeholder')).toBeTruthy()
+          expect(input.getAttribute('placeholder')).toMatch('Clumsy')
+        })
+      })
+
+      describe('button', () => {
+        it('tests the button exists', () => {
+          expect(btn).toBeTruthy()
+        })
+
+        it('tests the button has a type attribute and it equals to "submit"', () => {
+          expect(btn.hasAttribute('type')).toBeTruthy()
+          expect(btn.getAttribute('type')).toMatch('submit')
+        })
+
+        it('tests the button has a value attribute and it equals to "Add"', () => {
+          expect(btn.hasAttribute('value')).toBeTruthy()
+          expect(btn.getAttribute('value')).toMatch('Add')
+        })
+      })
     })
   })
 })
