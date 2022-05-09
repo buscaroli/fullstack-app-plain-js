@@ -71,5 +71,40 @@ describe('client/index.html', () => {
         expect(parentNodeHasClassOfHeader).toBeTruthy()
       })
     })
+
+    describe('section-1', () => {
+      // testing the components included within section-1
+      let section1, form, label, input, btn
+      beforeEach(() => {
+        section1 = document.querySelector('#section-1')
+        form = document.querySelector('#form-id')
+        label = document.querySelector('#form-label')
+        input = document.querySelector('#form-input')
+        btn = document.querySelector('#form-btn')
+      })
+
+      it('tests and section-1 exists', () => {
+        expect(section1).toBeTruthy()
+      })
+
+      it('tests the form exists', () => {
+        expect(form).toBeTruthy()
+      })
+
+      describe('label', () => {
+        it('tests the label exists', () => {
+          expect(label).toBeTruthy()
+        })
+
+        it('tests the label has a for attribure and that it is equal to "form-input"', () => {
+          expect(label.hasAttribute('for')).toBeTruthy()
+          expect(label.getAttribute('for')).toEqual('form-input')
+        })
+
+        it('tests the label has a value of "Smurf Name"', () => {
+          expect(label.textContent).toMatch('Smurf Name')
+        })
+      })
+    })
   })
 })
