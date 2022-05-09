@@ -10,8 +10,8 @@
     "test": "tests"
   },
   "scripts": {
-    "test": "jest --watch --silent",
-    "coverage": "jest --coverage --silent"
+    "test": "jest --watchAll",
+    "coverage": "jest --coverage"
   },
   "author": "",
   "license": "ISC",
