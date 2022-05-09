@@ -1,0 +1,10 @@
+{
+  "scripts": {
+    "test":"jest --watchAll",
+    "coverage":"jest --coverage"
+  },
+  "dependencies": {
+    "jest":"^28.1.0",
+    "jest-environment-jsdom":"^28.1.0"
+  }
+}

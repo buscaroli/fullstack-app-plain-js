@@ -239,3 +239,30 @@ Imported client/utils.js within index.html
 - removed most comments as can be seen through the different branches
 
 #### **Separating the functionality (client/utils.js) from the controller (client/app.js) should make it easier to test as I can create two separate test suites.**
+
+### testing-client-1
+
+Installed Jest and jest-environment-jsdom:
+
+```bash
+npm i jest jest-environment-dom
+
+```
+
+Modified package.json to look like this:
+
+```json
+{
+  "scripts": {
+    "test": "jest --watchAll",
+    "coverage": "jest --coverage"
+  },
+  "dependencies": {
+    "jest": "^28.1.0",
+    "jest-environment-jsdom": "^28.1.0"
+  }
+}
+```
+
+- Created client/tests/view.test.js
+- tested the <header> element wit jest and the included <h1> element
