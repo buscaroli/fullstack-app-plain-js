@@ -1,8 +1,4 @@
 {
-  "dependencies": {
-    "jest": "^28.1.0",
-    "jest-environment-jsdom": "^28.1.0"
-  },
   "name": "client",
   "version": "1.0.0",
   "main": "app.js",
@@ -11,9 +7,15 @@
   },
   "scripts": {
     "test": "jest --watchAll",
-    "coverage": "jest --coverage"
+    "coverage": "jest --coverage",
+    "jestClear": "jest --clearCache"
   },
   "author": "",
   "license": "ISC",
-  "description": ""
+  "keywords": [],
+  "description": "",
+  "devDependencies": {
+    "jest": "^28.1.0",
+    "jest-environment-jsdom": "^28.1.0"
+  }
 }

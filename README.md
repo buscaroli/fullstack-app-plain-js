@@ -13,6 +13,8 @@ This app is smurf-inspired, which means if you enter the name of a few famous sm
 - connect the frontend to the backend
 - test both the frontend anf rhe backend
 
+3. TODO There is a bug that makes `jest --coverage` return a coverage of 0% for the frontend tests. I couldn't sort it out but the tests are passing.
+
 ## 💾 Tech
 
 ### 🖥 Frontend
@@ -398,3 +400,8 @@ if (smurfToBeRemovedExists) {
   res.send({ name: nameSmurfToBeRemoved })
 }
 ```
+
+### main
+
+There is a bug that makes `jest --coverage` return a result of 0%.
+I have tried to remove and re-install the packages as dev dependencies and tried to run tests with a different command but nothing seems to work.
