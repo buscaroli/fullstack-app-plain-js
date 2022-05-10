@@ -327,7 +327,7 @@ I have also added a simple test that checks for a HTTP response of 200 (OK) when
 
 #### ERRATA CORRIGE
 
-In server/server.js, within POST /smurfs:
+In server/server.js, within the route POST /smurfs:
 
 - add a status of 201 (Created) before sending back the smurf with the response, also send back an object instead of a string or you won't be able to test it.
   The code should look like this:
@@ -343,3 +343,26 @@ In server/server.js, within POST /smurfs:
 Worked in server/tests/server.test.js:
 
 - Added tests for POST /smurfs, both 201 (Created) and 403 (Forbidden)
+
+### testing-server-3
+
+### ERRATA CORRIGE
+
+In server/server.js, within the route DELETE /smurfs:
+
+- return an object instead of a string on a successful operation so it can be tested
+  Your code should look like this:
+
+```js
+if (smurfToBeRemovedExists) {
+  let filteredArray = dataArray.filter(
+    (smurf) => smurf.toLowerCase() !== nameSmurfToBeRemoved.toLowerCase()
+  )
+  dataArray = filteredArray
+  res.send({ name: nameSmurfToBeRemoved })
+}
+```
+
+Worked on server/server/tests/server.test.js:
+
+- Added tests for the route DELETE /smurfs, both 200 (OK) and 404 (Not Found)
