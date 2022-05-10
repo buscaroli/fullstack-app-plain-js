@@ -322,3 +322,24 @@ I have added two Hooks to server/tests/server.test.js:
 - afterAll() will stop the server after all the tests have run (once after the last test has run)
 
 I have also added a simple test that checks for a HTTP response of 200 (OK) when the client tries to connect to `http://localhost3000/`
+
+### testing-server-2
+
+#### ERRATA CORRIGE
+
+In server/server.js, within POST /smurfs:
+
+- add a status of 201 (Created) before sending back the smurf with the response, also send back an object instead of a string or you won't be able to test it.
+  The code should look like this:
+
+```js
+  // If the newSmurf is not in the db we can add them
+    else {
+    dataArray.push(newSmurfName)
+    res.status(201).send({ name: newSmurfName })
+  }
+```
+
+Worked in server/tests/server.test.js:
+
+- Added tests for POST /smurfs, both 201 (Created) and 403 (Forbidden)

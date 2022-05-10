@@ -28,15 +28,15 @@ app.post('/smurfs/', (req, res) => {
   // we create a new variable with the data received from req.body
   // req.body is what is sent from client/submitNewSmurf()
   const newSmurf = req.body
-  console.log(newSmurf)
+  console.log('server.js - ', newSmurf)
   const newSmurfName = newSmurf.name
-  console.log('newSmurfName -> ', newSmurfName)
+  console.log('server.js - newSmurfName -> ', newSmurfName)
 
   // We check if the name alrady exists in the database
   const newSmurfExists = dataArray.some(
     (smurf) => smurf.toLowerCase() === newSmurfName.toLowerCase()
   )
-  console.log(newSmurfExists)
+  console.log('server.js - newSmurfExists -> ', newSmurfExists)
   // If the newSmurf is already in the Database we are going to console.log the message
   // and we are also sending a response with an HTTP Status of 403 (Forbidden) and a
   // json object with a key of error and a value of errorMessage
@@ -57,7 +57,7 @@ app.post('/smurfs/', (req, res) => {
     // If the newSmurf is not in the db we can add them
   } else {
     dataArray.push(newSmurfName)
-    res.send(newSmurfName)
+    res.status(201).send({ name: newSmurfName })
   }
 
   // DELETE /smurfs
