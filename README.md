@@ -1,10 +1,19 @@
 # 💪 Learning to connect the Frontend to the Backend: FullStack Dev 💪
 
 I have decided to make an app that would cover both the frontend and the backend, testing included.
+I have done this mainly to make an **Instructional Repo** that either me or someone else could use as a guideline to build a fullstack app.
 If accessing the app with a web browser, you can add some colored cards after entering a name in the form and pressing the button.
 This app is smurf-inspired, which means if you enter the name of a few famous smurfs (try smurfette and papa smurf, the rest are up to you to find!) the cards will have a different colour.
 
-## 💾 Technology
+### Limitations ans Scope
+
+1. I didn't have much time to put as I was doing a fulltime bootcamp so the app needs some (actually a lot!) of polishing
+2. I didn't use a database but relied on an array (data is not stored) as the main purpose was to learn to:
+
+- connect the frontend to the backend
+- test both the frontend anf rhe backend
+
+## 💾 Tech
 
 ### 🖥 Frontend
 
@@ -44,7 +53,7 @@ Then:
 
 ## 🌲 BRANCHES
 
-This the order I have used to develop this app. By opening the branches in that order you can see all the different steps I have taken in order to get to the final release.
+This the order I have followed to develop this app. By opening the branches in this order you can see all the different steps I have take to get to the final release.
 
 ### 👾 server1
 
