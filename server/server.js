@@ -82,7 +82,7 @@ app.post('/smurfs/', (req, res) => {
         (smurf) => smurf.toLowerCase() !== nameSmurfToBeRemoved.toLowerCase()
       )
       dataArray = filteredArray
-      res.send(nameSmurfToBeRemoved)
+      res.send({ name: nameSmurfToBeRemoved })
 
       // If the smurf we want to remove IS NOT in the array then we log a message
       // to the console, we send a HTTP Status response of 404 (NOT FOUND) and

@@ -67,4 +67,32 @@ describe('Testing the Routes of the server', () => {
     expect(response.body.error).toBeTruthy()
     expect(response.body.error).toMatch(/SmurfDatabase/)
   })
+
+  it('tests that a newly created smurf can be deleted with a response of 200 (OK) and checks the response matches the name of the deleted smurf', async () => {
+    let newSmurf = { name: 'Brainy' }
+
+    const response = await request(api)
+      .post('/smurfs')
+      .send(newSmurf)
+      .expect(201)
+
+    const response2 = await request(api)
+      .delete('/smurfs')
+      .send(newSmurf)
+      .expect(200)
+
+    expect(response2.body.name).toBe('Brainy')
+  })
+
+  it('tests that if you try to delete a non-existent smurf it will respond with a status of 404 (Not Found) and an error message containing the word "SmurfDatabase"', async () => {
+    let nonExistentSmurf = { name: 'NonExistentSmurfName' }
+
+    const response = await request(api)
+      .delete('/smurfs')
+      .send(nonExistentSmurf)
+      .expect(404)
+
+    expect(response.body.error).toBeTruthy()
+    expect(response.body.error).toMatch(/SmurfDatabase/)
+  })
 })
