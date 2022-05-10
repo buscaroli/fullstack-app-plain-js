@@ -34,4 +34,37 @@ describe('Testing the Routes of the server', () => {
     // will fail because you didn't let it know that the test had reached its end!
     done()
   })
+
+  it('tests that we can add a new smurf to POST /smurfs with a HTTP Response of 201 (Created)', (done) => {
+    let newSmurf = 'Smurfette'
+
+    request(api).post('/smurfs').send(newSmurf).expect(201)
+    done()
+  })
+
+  // using async/await instead of done makes it easier to test the body of the response
+  it('tests that the data array contains the right smurf name after adding "Smurfette"', async () => {
+    let newSmurf = { name: 'Smurfette' }
+
+    const response = await request(api)
+      .post('/smurfs')
+      .send(newSmurf)
+      .expect(201)
+
+    expect(response.body.name).toBe('Smurfette')
+  })
+
+  it('tests that trying to add the same smurf twice will send an HTTP status of 403(Forbidden) and an error message containing the word "SmurfDatabase"', async () => {
+    let newSmurf = { name: 'Clumsy' }
+
+    await request(api).post('/smurfs').send(newSmurf).expect(201)
+
+    const response = await request(api)
+      .post('/smurfs')
+      .send(newSmurf)
+      .expect(403)
+
+    expect(response.body.error).toBeTruthy()
+    expect(response.body.error).toMatch(/SmurfDatabase/)
+  })
 })
