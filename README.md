@@ -288,7 +288,7 @@ Modified package.json to look like this:
 ```
 
 - Created client/tests/view.test.js
-- tested the <header> element wit jest and the included <h1> element
+- tested the `header` element wit jest and the included `h1` element
 
 ### 🧪 testing-client-2
 
