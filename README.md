@@ -363,6 +363,6 @@ if (smurfToBeRemovedExists) {
 }
 ```
 
-Worked on server/server/tests/server.test.js:
+Worked on server/tests/server.test.js:
 
 - Added tests for the route DELETE /smurfs, both 200 (OK) and 404 (Not Found)
