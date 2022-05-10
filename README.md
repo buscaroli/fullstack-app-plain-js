@@ -277,7 +277,48 @@ Modified package.json to look like this:
 - tested input within the form
 - tested button within the form
 
-### testing-section-4
+### testing-client-4
 
 - tested existence of section-2
 - tested the footer and its children
+
+### testing-server-1
+
+Setting up the system in order to be able to do server-side testing:
+
+```bash
+cd server
+npm i -D jest supertest
+```
+
+Create the file where you are going to run the tests:
+
+```bash
+mkdir tests
+touch tests/server.test.js
+```
+
+dd the two new commands to the script property within server/package.json:
+
+```json
+"scripts": {
+    "start": "node index.js",
+    "dev": "nodemon index.js",
+    "test": "jest --watchAll",
+    "coverage": "jest --coverage"
+  },
+```
+
+Now you can both test and check the coverage by running the following commands(And remember that when running `npm test` jest is run in --watchAll mode, which means it will re-run the tests every time you save the file, very handy!):
+
+```bash
+npm test
+npm run coverage
+```
+
+I have added two Hooks to server/tests/server.test.js:
+
+- beforeAll() will start the server before the tests are run (once at the beginning)
+- afterAll() will stop the server after all the tests have run (once after the last test has run)
+
+I have also added a simple test that checks for a HTTP response of 200 (OK) when the client tries to connect to `http://localhost3000/`
