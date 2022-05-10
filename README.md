@@ -1,6 +1,27 @@
-# Learning to connect the Frontend to the Backend: FullStack Dev
+# 💪 Learning to connect the Frontend to the Backend: FullStack Dev 💪
 
-## HOW TO RUN
+I have decided to make an app that would cover both the frontend and the backend, testing included.
+If accessing the app with a web browser, you can add some colored cards after entering a name in the form and pressing the button.
+This app is smurf-inspired, which means if you enter the name of a few famous smurfs (try smurfette and papa smurf, the rest are up to you to find!) the cards will have a different colour.
+
+## 💾 Technology
+
+### 🖥 Frontend
+
+- HTML
+- CSS
+- Plain JS
+- Jest testing library
+
+### 💻 Backend
+
+- Nodejs
+- Expressjs
+- Jest testing library
+- Supertest for testing HTTP responses
+- nodemon for a smoother development experience
+
+## 🚗 HOW TO RUN
 
 To run the server:
 
@@ -21,11 +42,11 @@ Then:
   - http.server
   - your favourite choice
 
-## BRANCHES
+## 🌲 BRANCHES
 
 This the order I have used to develop this app. By opening the branches in that order you can see all the different steps I have taken in order to get to the final release.
 
-### server1
+### 👾 server1
 
 - basic directory structure with a few basic files
 - git has been initialised in the root directory (where the README.md file is)
@@ -43,7 +64,7 @@ This the order I have used to develop this app. By opening the branches in that 
 
   - you can access localhost:3000/ (run `npm run dev` if not already launched then go to localhost:3000/ in your browser)
 
-  ### ERRATA CORRIDGE
+  #### 🚨 ERRATA CORRIDGE
 
   In the client/index.html I had originally imported a file called index.js but I had created a file called app.js
 
@@ -53,7 +74,7 @@ This the order I have used to develop this app. By opening the branches in that 
   <script defer src="./app.js"></script>
   ```
 
-### server2
+### 👾 server2
 
 - added server/data.js file that contains an array where data about the smurfs is kept
 - the array:
@@ -62,14 +83,14 @@ This the order I have used to develop this app. By opening the branches in that 
 - a new route has been added to server/server.js
   - you can access localhost:3000/smurfs
 
-### server3
+### 👾 server3
 
 - worked on server/server.js, there are now three routes:
   - GET / browser/hoppscotch: responds with a welcome message
   - GET /smurfs browser/hoppscotch: responds with a list of smurfs from the DB
   - POST /smurfs hoppscotch: adds 'Clumsy' or if already there responds with 405 (Forbidden) and an error message
 
-#### ERRATA CORRIDGE
+##### 🚨 ERRATA CORRIDGE
 
 The array in server/data.js and in server/server.js should be defined as a let and not as a const
 
@@ -82,12 +103,12 @@ The array in server/data.js and in server/server.js should be defined as a let a
   const newSmurfExists = dataArray.some((smurf) => smurf === newSmurf)
   ```
 
-### server4
+### 👾 server4
 
 - worked on server/server.js, 👆 fixed errors as per **ERRATA CORRIGE** at #server3 👆
   - added rouse DELETE /smurfs: removes 'Clumsy' or if not found responds with an HTTP Status of 404 (Not Found) and an error message
 
-### client1
+### 🛸 client1
 
 - worked on the client/index.html and client/style.css files:
   - added a header with title
@@ -97,16 +118,22 @@ The array in server/data.js and in server/server.js should be defined as a let a
   - given the body a height of 100vh to have the page be the same size as the height of the screen
   - page is fluid but not responsive (elements shrink but do not rearrange themselves when the screen widtg is decreased)
 
-### client2
+### 🛸 client2
 
 - worked on index.html and style.css:
   - added two sections inside of main: section-1 contains the form, section-2 will contain the smurf cards
   - added a basic form using flexbox
   - the form is not doing anything yet when the button is pressed
 
-### client3
+### 🛸 client3
 
-### ERRATA CORRIDGE - reminder from from ##server1
+Worked on client/app.js:
+
+- added the references to the elements we are going to targer
+- added a function that fetch the smurfs grom the GET /smurfs route of our server
+  - the function is called as soon as the page loads using the window.onload property
+
+#### 🚨 ERRATA CORRIDGE - reminder from from ##server1
 
 In the client/index.html I had originally imported a file called index.js but I had created a file called app.js
 
@@ -116,14 +143,14 @@ In the client/index.html I had originally imported a file called index.js but I 
 <script defer src="./app.js"></script>
 ```
 
-- worked on client/app.js:
-  - added the references to the elements we are going to targer
-  - added a function that fetch the smurfs grom the GET /smurfs route of our server
-    - the function is called as soon as the page loads using the window.onload property
+### 🛸 client4
 
-### client4
+Worked on client/app.js:
 
-#### ERRATA CORRIDGE
+- we can now create cards with the smurfs name we fetched via the function introduced in the previous chapter
+- the cards are appended to section-2
+
+#### 🚨 ERRATA CORRIDGE
 
 In client/app.js, please amend the line where we add the class to the smurfCard.
 
@@ -132,10 +159,6 @@ In client/app.js, please amend the line where we add the class to the smurfCard.
 ```js
 smurfCard.classList.add('smurfCard')
 ```
-
-- worked on client/app.js:
-  - we can now create cards with the smurfs name we fetched via the function introduced in the previous chapter
-  - the cards are appended to section-2
 
 #### Flow of the data
 
@@ -148,7 +171,7 @@ smurfCard.classList.add('smurfCard')
 4. createCardAndAppend() uses the smurf element of the array (which is a String) to add it to the card
 5. createCardAndAppend() appends the card to section2
 
-### client5
+### 🛸 client5
 
 - Worked on client/style.css:
 
@@ -169,7 +192,7 @@ smurfCard.classList.add('smurfCard')
 
   - you can follow the same steps after deleting 'Clumsy' with Hoppscotch or a similar tool
 
-### fullstack1
+### 🪐 fullstack1
 
 Worked on client/style.css:
 
@@ -191,13 +214,7 @@ Worked on server/server.js:
     - we extract the name out of that object (req.body.name)
     - we amenhave to fix the comparison function to consider we now have to use req.body.name, whose value we saved in newSmurfName or nameSmurfToBeRemoved
 
-### fullstack2
-
-### ERRATA CORRIDGE
-
-Within server/server.js inside route 'DELETE /smurfs':
-
-- I used an non-existing variable name of smurfToBeRemoved a few times, please amend it to nameSmurfToBeRemoved
+### 🪐 fullstack2
 
 Worked on server/server.js:
 
@@ -208,7 +225,13 @@ Worked on client/add.js:
 - when creting the smurfCard:
   - added an event listened that will send a delete request when the card is clicked
 
-### polishing1
+### 🚨 ERRATA CORRIDGE
+
+Within server/server.js inside route 'DELETE /smurfs':
+
+- I used an non-existing variable name of smurfToBeRemoved a few times, please amend it to nameSmurfToBeRemoved
+
+### 💅 polishing1
 
 Worked on client/app.js
 
@@ -227,7 +250,7 @@ Amended the justify-content property of .section-2 inside client/style.css, as I
 justify-content: center;
 ```
 
-### polishing2
+### 💅 polishing2
 
 Worked on /client/app.js
 Created client/utils.js
@@ -240,7 +263,7 @@ Imported client/utils.js within index.html
 
 #### **Separating the functionality (client/utils.js) from the controller (client/app.js) should make it easier to test as I can create two separate test suites.**
 
-### testing-client-1
+### 🧪 testing-client-1
 
 Installed Jest and jest-environment-jsdom:
 
@@ -267,22 +290,22 @@ Modified package.json to look like this:
 - Created client/tests/view.test.js
 - tested the <header> element wit jest and the included <h1> element
 
-### testing-client-2
+### 🧪 testing-client-2
 
 - Recovered from a random bug: had duplicate copies of files
 - testing the dom: tested form and label
 
-### testing-client-3
+### 🧪 testing-client-3
 
 - tested input within the form
 - tested button within the form
 
-### testing-client-4
+### 🧪 testing-client-4
 
 - tested existence of section-2
 - tested the footer and its children
 
-### testing-server-1
+### 🧪 testing-server-1
 
 Setting up the system in order to be able to do server-side testing:
 
@@ -323,9 +346,13 @@ I have added two Hooks to server/tests/server.test.js:
 
 I have also added a simple test that checks for a HTTP response of 200 (OK) when the client tries to connect to `http://localhost3000/`
 
-### testing-server-2
+### 🧪 testing-server-2
 
-#### ERRATA CORRIGE
+Worked in server/tests/server.test.js:
+
+- Added tests for POST /smurfs, both 201 (Created) and 403 (Forbidden)
+
+#### 🚨 ERRATA CORRIGE
 
 In server/server.js, within the route POST /smurfs:
 
@@ -340,13 +367,13 @@ In server/server.js, within the route POST /smurfs:
   }
 ```
 
-Worked in server/tests/server.test.js:
+### 🧪 testing-server-3
 
-- Added tests for POST /smurfs, both 201 (Created) and 403 (Forbidden)
+Worked on server/tests/server.test.js:
 
-### testing-server-3
+- Added tests for the route DELETE /smurfs, both 200 (OK) and 404 (Not Found)
 
-### ERRATA CORRIGE
+### 🚨 ERRATA CORRIGE
 
 In server/server.js, within the route DELETE /smurfs:
 
@@ -362,7 +389,3 @@ if (smurfToBeRemovedExists) {
   res.send({ name: nameSmurfToBeRemoved })
 }
 ```
-
-Worked on server/tests/server.test.js:
-
-- Added tests for the route DELETE /smurfs, both 200 (OK) and 404 (Not Found)
